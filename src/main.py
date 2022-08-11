@@ -24,7 +24,7 @@ def main():
     args = get_args()
     results_path = "../results"
     os.makedirs(results_path, exist_ok=True)
-    results_file_path = os.path.join(results_path, 'ppo_symm_entropy.txt')
+    results_file_path = os.path.join(results_path, 'ppo_symm_entropy-{}.txt'.format(args.env_name))
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
 
@@ -200,8 +200,6 @@ def main():
             obs_rms = utils.get_vec_normalize(envs).obs_rms
             evaluate(actor_critic, obs_rms, args.env_name, args.seed,
                      args.num_processes, eval_log_dir, device)
-        #if j > 3500:
-        #    break
 
 
 if __name__ == "__main__":
