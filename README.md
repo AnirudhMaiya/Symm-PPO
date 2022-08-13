@@ -2,11 +2,12 @@
 Proximal Policy Optimization with Symmetric Entropy
 
 ## Motivation
-Reinforcement Learning is very sensitive to hyperparameters. I was stuck with a problem in my final year project where the the agent wasn't making progress and was stuck in a sub-optimal policy when I was using PPO. This is when I increased the entropy coefficient value in the existing vanilla PPO framework. Choosing such coefficients is hard and daunting in general. Since PPO follows on the analogy of new policy not being too different from the old one, I tried to inculcate the same idea to the entropy but the entropy is symmetric.
+Reinforcement Learning is very sensitive to hyperparameters. I was stuck with a problem in my final year project where the agent wasn't making progress and was stuck in a sub-optimal policy when I was using PPO. This is when I increased the entropy coefficient value in the existing vanilla PPO framework. Choosing such coefficients is hard and daunting in general. Since PPO follows on the analogy of new policy not being too different from the old one, I tried to inculcate the same idea to the entropy but the entropy is symmetric.
 
 ## Algorithm
+![Symm-PPO-Algorithm](viz/Symm-PPO.PNG)
 
-
+I also decay the <a href='https://github.com/AnirudhMaiya/Symm-PPO/blob/main/src/a2c_ppo_acktr/algo/ppo.py#L42'>entropy coefficient</a> here. 
 ## Prerequisites
 <li>Python 3</li>
 <li>PyTorch (Tested on 1.12.1)</li>
@@ -20,7 +21,7 @@ Please clone this repository to your local machine
 ```
 git clone https://github.com/AnirudhMaiya/Symm-PPO
 ```
-After cloning check into the src folder of the repository 
+After cloning, check into the src folder of the repository 
 ```python
 !pip install -r requirements.txt
 
@@ -46,5 +47,8 @@ The above code can also be executed through a jupyter notebook <a href = 'https:
 ### Seaquest-v0
 ![Seaquest-v0-Median-Rewards](viz/Seaquest-v0.png)
 ![Seaquest-v0-Diff-Median-Rewards](viz/Seaquest-v0-diff.png)
+
+## Afterthought
+The symmetric entropy added serves as a regularizer. Hence the median rewards are less initially when compared to Vanilla PPO.   
 
 ### Special thanks to <a href = 'https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail'>pytorch-a2c-ppo-acktr-gail</a> repository.
